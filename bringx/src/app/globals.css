@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --bg-deep:   #000000;
+  --bg-card:   rgba(255,255,255,0.04);
+  --border:    rgba(255,255,255,0.10);
+  --primary:   #ffffff;
+  --accent:    #e2e8f0;
+  --pass:      #ffffff;
+  --fail:      #a0a0a0;
+  --text-main: #ffffff;
+  --text-muted:#94a3b8;
+  --shimmer:   rgba(255,255,255,0.06);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #000000;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(255,255,255,0.02) 0%, transparent 50%);
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Shiny white scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 3px;
+}
+
+/* Glass card — black + white border */
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Shiny white gradient text */
+.grad-text {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e2e8f0 30%,
+    #94a3b8 60%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Slide up */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide-up { animation: slide-up 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+
+/* Float (ambient blobs) */
+@keyframes float {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(15px, 12px) scale(1.05); }
+}

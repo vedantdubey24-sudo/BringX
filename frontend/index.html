@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Student Performance Predictor | ML Project</title>
+  <meta name="description"
+        content="Predict student marks and pass/fail outcome using Linear and Logistic Regression. Enter study hours, attendance, and previous marks to get an instant AI prediction." />
+  <meta name="keywords"
+        content="student performance prediction, machine learning, linear regression, logistic regression, data science project" />
+  <meta name="author" content="DS Mini Project" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Student Performance Predictor" />
+  <meta property="og:description" content="AI-powered student marks and result predictor using ML." />
+  <meta property="og:type"        content="website" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+
+<body>
+
+  <!-- ── HEADER ──────────────────────────────────────────── -->
+  <header>
+    <div class="badge">🤖 AI-Powered &nbsp;·&nbsp; Linear + Logistic Regression</div>
+    <h1>Student Performance<br/>Predictor</h1>
+    <p>
+      Enter your study hours, attendance percentage, and previous marks.
+      Our ML model will instantly predict your expected score and whether
+      you are likely to <strong>Pass</strong> or <strong>Fail</strong>.
+    </p>
+  </header>
+
+  <!-- ── MAIN CONTENT ──────────────────────────────────── -->
+  <main>
+
+    <!-- INPUT CARD ─────────────────────────────────────── -->
+    <section class="card" id="input-card" aria-labelledby="form-title">
+      <div class="card-title" id="form-title">
+        <span class="icon">📋</span>
+        Enter Your Details
+      </div>
+      <p class="card-subtitle">All three fields are required for the prediction.</p>
+
+      <form id="predict-form" novalidate>
+        <div class="form-grid">
+
+          <!-- Study Hours -->
+          <div class="form-group">
+            <label for="hours">Study Hours / Day</label>
+            <div class="input-wrapper">
+              <span class="input-icon">⏱️</span>
+              <input
+                type="number"
+                id="hours"
+                name="hours"
+                min="0" max="24"
+                step="0.5"
+                placeholder="e.g. 6"
+                required
+                aria-describedby="hours-hint"
+              />
+            </div>
+            <span class="range-hint" id="hours-hint">Range: 0 – 24 hours</span>
+          </div>
+
+          <!-- Attendance -->
+          <div class="form-group">
+            <label for="attendance">Attendance (%)</label>
+            <div class="input-wrapper">
+              <span class="input-icon">📅</span>
+              <input
+                type="number"
+                id="attendance"
+                name="attendance"
+                min="0" max="100"
+                step="1"
+                placeholder="e.g. 85"
+                required
+                aria-describedby="att-hint"
+              />
+            </div>
+            <span class="range-hint" id="att-hint">Range: 0 – 100 %</span>
+          </div>
+
+          <!-- Previous Marks -->
+          <div class="form-group">
+            <label for="previous">Previous Marks</label>
+            <div class="input-wrapper">
+              <span class="input-icon">📝</span>
+              <input
+                type="number"
+                id="previous"
+                name="previous"
+                min="0" max="100"
+                step="1"
+                placeholder="e.g. 72"
+                required
+                aria-describedby="prev-hint"
+              />
+            </div>
+            <span class="range-hint" id="prev-hint">Range: 0 – 100 marks</span>
+          </div>
+
+        </div><!-- /.form-grid -->
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn-predict"
+          id="submit-btn"
+          aria-label="Predict my performance"
+        >
+          <span class="btn-text">🔮 &nbsp;Predict My Performance</span>
+          <span class="btn-loader">
+            <span class="spinner"></span>
+            Analysing…
+          </span>
+        </button>
+
+      </form>
+    </section>
+
+    <!-- RESULT CARD ────────────────────────────────────── -->
+    <section class="card" id="results-section" style="display:none;" aria-live="polite" aria-label="Prediction Results">
+      <div class="card-title">
+        <span class="icon">📊</span>
+        Prediction Results
+      </div>
+      <p class="card-subtitle" id="result-subtitle">
+        Based on your inputs, here is what the model predicts.
+      </p>
+
+      <!-- Metrics Grid -->
+      <div class="results-grid">
+
+        <!-- Predicted Marks -->
+        <div class="metric-card marks" id="marks-card">
+          <div class="metric-label">📈 Predicted Marks</div>
+          <div class="metric-value" id="predicted-marks">
+            —<span class="metric-unit">/ 100</span>
+          </div>
+        </div>
+
+        <!-- Pass / Fail -->
+        <div class="metric-card" id="result-card">
+          <div class="metric-label">🎯 Expected Result</div>
+          <div class="metric-value" id="result-label">—</div>
+
+          <!-- Confidence bar -->
+          <div class="prob-bar-wrapper">
+            <div class="prob-bar" id="prob-bar" style="width:0%"></div>
+          </div>
+          <span class="prob-label" id="prob-label">Confidence: —%</span>
+        </div>
+
+      </div><!-- /.results-grid -->
+
+      <!-- Input Summary -->
+      <p style="font-size:0.8rem; color:var(--clr-muted); margin-bottom:10px;">
+        Based on your inputs:
+      </p>
+      <div class="input-summary" id="input-summary"></div>
+    </section>
+
+    <!-- INFO CARD ──────────────────────────────────────── -->
+    <section class="card" aria-label="Model Information">
+      <div class="card-title">
+        <span class="icon">🧠</span>
+        How the Models Work
+      </div>
+      <p class="card-subtitle">A brief explanation for academic understanding.</p>
+
+      <div class="info-grid">
+        <div class="info-block">
+          <h4>📈 Linear Regression</h4>
+          <p>
+            Used to predict a <em>continuous</em> numerical value — your expected
+            Marks. It fits a straight-line relationship between the input features
+            (hours, attendance, previous marks) and the output (score).
+            Evaluated using <strong>MAE, MSE, and R²</strong>.
+          </p>
+        </div>
+        <div class="info-block">
+          <h4>✅ Logistic Regression</h4>
+          <p>
+            Used to predict a <em>categorical</em> outcome — Pass or Fail (1 or 0).
+            It estimates the probability of passing using the sigmoid function.
+            Evaluated using <strong>Accuracy, Precision, Recall,
+            and Confusion Matrix</strong>.
+          </p>
+        </div>
+        <div class="info-block">
+          <h4>🔢 Features Used</h4>
+          <p>
+            <strong>Hours:</strong> Daily study hours<br/>
+            <strong>Attendance:</strong> % of classes attended<br/>
+            <strong>Previous Marks:</strong> Marks in prior exam<br/>
+            All three strongly correlate with academic performance.
+          </p>
+        </div>
+        <div class="info-block">
+          <h4>🛠️ Tech Stack</h4>
+          <p>
+            <strong>Backend:</strong> Python · Flask · scikit-learn<br/>
+            <strong>Data:</strong> pandas · NumPy · seaborn<br/>
+            <strong>Frontend:</strong> HTML5 · CSS3 · Vanilla JS<br/>
+            <strong>Storage:</strong> pickle (.pkl model files)
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ── FOOTER ──────────────────────────────────────────── -->
+  <footer>
+    <p>Student Performance Prediction &nbsp;·&nbsp; Data Science Mini Project</p>
+    <p>Linear Regression &amp; Logistic Regression &nbsp;·&nbsp; Built with Python, Flask &amp; scikit-learn</p>
+  </footer>
+
+  <!-- ── ERROR TOAST ─────────────────────────────────────── -->
+  <div id="error-toast" role="alert" aria-live="assertive"></div>
+
+  <!-- ── JAVASCRIPT ──────────────────────────────────────── -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+[
+  {
+    "_id": "v8s5qghla5mmssy5ona",
+    "studentName": "vedant Dubey",
+    "subjects": [
+      {
+        "subjectName": "Stats",
+        "studyHours": 5,
+        "attendance": 25,
+        "previousMarks": 75,
+        "predictedScore": 46.3,
+        "passed": false,
+        "confidence": 63
+      },
+      {
+        "subjectName": "DSA",
+        "studyHours": 4.5,
+        "attendance": 50,
+        "previousMarks": 0,
+        "predictedScore": 14.6,
+        "passed": false,
+        "confidence": 99.8
+      },
+      {
+        "subjectName": "DS",
+        "studyHours": 4,
+        "attendance": 34,
+        "previousMarks": 85,
+        "predictedScore": 56.8,
+        "passed": true,
+        "confidence": 77.5
+      },
+      {
+        "subjectName": "CG",
+        "studyHours": 2,
+        "attendance": 55,
+        "previousMarks": 11,
+        "predictedScore": 22.7,
+        "passed": false,
+        "confidence": 99.6
+      },
+      {
+        "subjectName": "DBMS",
+        "studyHours": 5,
+        "attendance": 86,
+        "previousMarks": 25,
+        "predictedScore": 49.6,
+        "passed": true,
+        "confidence": 74.3
+      }
+    ],
+    "overallScore": 38,
+    "overallPerformance": "Fail",
+    "createdAt": "2026-08-14T12:52:20.614Z"
+  },
+  {
+    "_id": "s7sc309irjhmovec2g6",
+    "studentName": "tirth talele",
+    "subjects": [
+      {
+        "subjectName": "Stats",
+        "studyHours": 5,
+        "attendance": 75,
+        "previousMarks": 75,
+        "predictedScore": 66,
+        "passed": true,
+        "confidence": 76
+      },
+      {
+        "subjectName": "DSA",
+        "studyHours": 5,
+        "attendance": 76,
+        "previousMarks": 56,
+        "predictedScore": 59,
+        "passed": true,
+        "confidence": 74
+      },
+      {
+        "subjectName": "DS",
+        "studyHours": 4,
+        "attendance": 55,
+        "previousMarks": 56,
+        "predictedScore": 50,
+        "passed": true,
+        "confidence": 70
+      },
+      {
+        "subjectName": "CG",
+        "studyHours": 5,
+        "attendance": 53,
+        "previousMarks": 5,
+        "predictedScore": 35,
+        "passed": false,
+        "confidence": 64
+      },
+      {
+        "subjectName": "DBMS",
+        "studyHours": 5,
+        "attendance": 56,
+        "previousMarks": 56,
+        "predictedScore": 55,
+        "passed": true,
+        "confidence": 72
+      }
+    ],
+    "overallScore": 53,
+    "overallPerformance": "Pass",
+    "createdAt": "2026-05-07T11:21:55.302Z"
+  },
+  {
+    "_id": "7lg0ywu0mctmojwuumx",
+    "studentName": "ashish",
+    "subjects": [
+      {
+        "subjectName": "Stats",
+        "studyHours": 3,
+        "attendance": 75,
+        "previousMarks": 56,
+        "predictedScore": 61.3,
+        "passed": true,
+        "confidence": 91.6
+      },
+      {
+        "subjectName": "DSA",
+        "studyHours": 4,
+        "attendance": 35,
+        "previousMarks": 74,
+        "predictedScore": 50.7,
+        "passed": true,
+        "confidence": 52.7
+      },
+      {
+        "subjectName": "DS",
+        "studyHours": 8,
+        "attendance": 89,
+        "previousMarks": 56,
+        "predictedScore": 71.3,
+        "passed": true,
+        "confidence": 99.8
+      },
+      {
+        "subjectName": "CG",
+        "studyHours": 9,
+        "attendance": 85,
+        "previousMarks": 100,
+        "predictedScore": 96.1,
+        "passed": true,
+        "confidence": 100
+      },
+      {
+        "subjectName": "DBMS",
+        "studyHours": 1,
+        "attendance": 0,
+        "previousMarks": 2,
+        "predictedScore": 0,
+        "passed": false,
+        "confidence": 100
+      }
+    ],
+    "overallScore": 56,
+    "overallPerformance": "Pass",
+    "createdAt": "2026-04-29T10:27:10.617Z"
+  },
+  {
+    "_id": "tjo7yk03cyfmoj7q7gc",
+    "studentName": "samay raina",
+    "subjects": [
+      {
+        "subjectName": "Stats",
+        "studyHours": 5,
+        "attendance": 42,
+        "previousMarks": 50,
+        "predictedScore": 40.5,
+        "passed": false,
+        "confidence": 79.4
+      },
+      {
+        "subjectName": "DSA",
+        "studyHours": 12,
+        "attendance": 32,
+        "previousMarks": 50,
+        "predictedScore": 38.4,
+        "passed": true,
+        "confidence": 63
+      },
+      {
+        "subjectName": "DS",
+        "studyHours": 18,
+        "attendance": 97,
+        "previousMarks": 50,
+        "predictedScore": 76.8,
+        "passed": true,
+        "confidence": 100
+      },
+      {
+        "subjectName": "CG",
+        "studyHours": 2,
+        "attendance": 43,
+        "previousMarks": 72,
+        "predictedScore": 52.9,
+        "passed": false,
+        "confidence": 51.1
+      },
+      {
+        "subjectName": "DBMS",
+        "studyHours": 9,
+        "attendance": 15,
+        "previousMarks": 82,
+        "predictedScore": 46.9,
+        "passed": true,
+        "confidence": 69.6
+      }
+    ],
+    "overallScore": 51,
+    "overallPerformance": "Pass",
+    "createdAt": "2026-04-28T22:43:43.548Z"
+  }
+]
