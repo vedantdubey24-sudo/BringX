@@ -18,6 +18,15 @@ import numpy as np
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
+# ── Ngrok Tunnel (for public access) ─────────────────────────
+try:
+    from pyngrok import ngrok
+    # Uncomment the line below and add your ngrok auth token if needed
+    # ngrok.set_auth_token("YOUR_NGROK_AUTH_TOKEN")
+    ENABLE_NGROK = os.getenv("ENABLE_NGROK", "false").lower() == "true"
+except ImportError:
+    ENABLE_NGROK = False
+
 # ── App initialisation ───────────────────────────────────────
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
@@ -200,4 +209,14 @@ def predict():
 
 # ── Run ──────────────────────────────────────────────────────
 if __name__ == "__main__":
+    # Start ngrok tunnel if enabled
+    if ENABLE_NGROK:
+        try:
+            public_url = ngrok.connect(5000)
+            print(f"\n🌍 PUBLIC URL: {public_url}")
+            print("✅ Your app is now publicly accessible!\n")
+        except Exception as e:
+            print(f"⚠️  Ngrok failed to start: {e}")
+            print("Continuing without ngrok tunnel...\n")
+    
     app.run(debug=True, host="0.0.0.0", port=5000)
