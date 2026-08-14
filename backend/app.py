@@ -22,7 +22,6 @@ from flask_cors import CORS
 FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "frontend")
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
 CORS(app)   # allow requests from the frontend (cross-origin)
-
 # ── Paths ────────────────────────────────────────────────────
 BASE_DIR      = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR     = os.path.join(BASE_DIR, "..", "models")
